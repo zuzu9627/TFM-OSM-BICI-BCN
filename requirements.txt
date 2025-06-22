@@ -1,0 +1,11 @@
+numpy>=1.22
+pandas>=1.4
+matplotlib>=3.5
+geopandas>=0.12
+shapely>=2.0
+fiona>=1.8
+pyproj>=3.2
+ohsome>=1.0
+openpyxl>=3.1
+seaborn>=0.11
+tqdm>=4.62
