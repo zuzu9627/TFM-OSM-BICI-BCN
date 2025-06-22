@@ -77,8 +77,8 @@ Este proyecto fue desarrollado con Python e integra las siguientes bibliotecas:
 ## ✍️ Autora
 
 Este análisis forma parte del Trabajo de Fin de Máster (TFM) en Geoinformación 2024.  
-**Autora:** ZZZZ  
-**Universidad:** XXXX
+**Autora:** Zulema Orellana H. 
+**Universidad:** Universidad Autónoma de Barcelona
 
 ---
 
