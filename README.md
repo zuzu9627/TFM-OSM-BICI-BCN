@@ -9,16 +9,22 @@ Este proyecto analiza la fiabilidad de los datos colaborativos de OpenStreetMap 
 - Evaluar la **cobertura espacial** de OSM frente a la red oficial.
 - Medir la **precisión geométrica** y detección de errores del dato colaborativo.
 - Analizar el **valor añadido** de OSM (segmentos no oficiales confirmados).
-- Detectar **patrones espaciales de error** en la calidad del dato OSM.
+- Detectar **patrones espaciales de error** en distritos y zonas urbanas.
+- Ofrecer un **marco replicable** para la validación de datos de movilidad activa.
 
 ---
 
 ## 🧰 ¿Qué incluye este repositorio?
 
-- `v15.py`: Script principal que ejecuta todo el análisis.
+- `v15.py`: Script principal que ejecuta el análisis optimizado (diagnóstico + post-validación).
+- `utils.py`: Funciones auxiliares para:
+  - Normalización de códigos (`MUNDISSEC`).
+  - Formato automático y validación en Excel.
+  - Consolidación de métricas automáticas y validadas.
+  - Análisis por **distrito** y por **subzonas** (densidad / proximidad al centro).
+  - Exportación de resultados a tablas comparativas.
 - `requirements.txt`: Lista de dependencias necesarias.
 - `.gitignore`: Configuración para excluir archivos no deseados del control de versiones.
-
 ---
 
 ## ⚙️ Cómo ejecutar
@@ -40,24 +46,48 @@ python v15.py forzar_diagnostico
 ```
 
 ---
+## 📂 Estructura de resultados esperada
 
-## 📂 Estructura esperada de resultados
+- **Resultados automáticos (fase 1):**
+  - `metricas_automaticas_prevalidacion.xlsx`
+  - `graficos_metricas_automaticas.png`
+  - `mapas_tematicos_metricas.png`
+  - `comparativa_redes_*.png` (mapas OSM vs oficial)
 
-- `metricas_automaticas_prevalidacion.xlsx`
-- `metricas_validadas_post_GSV.xlsx`
-- `validacion_visual_unificada_*.xlsx`
-- `mapas_resultado/*.png`
-- `outputs/shapefiles/*.shp`
+- **Archivos de validación:**
+  - `validacion_visual_unificada_*.xlsx`
+
+- **Resultados post-validación (fase 2):**
+  - `metricas_validadas_post_GSV.xlsx`
+  - `resumen_metricas_validadas_por_tipo.xlsx`
+  - `metricas_con_infraestructura_validacion.xlsx`
+  - `metricas_sin_infraestructura_validacion.xlsx`
+  - `media_resumen_metricas_validados.xlsx`
+
+- **Tablas interpretativas (utils):**
+  - `TABLAS_RESULTADOS_INTERPRETACIONES/*.xlsx`
+  - `tabla_resumen_validacion_distrital.xlsx`
+  - `resumen_metricas_por_zona_*.xlsx`
 
 ---
-
 ## 📊 Métricas generadas
 
-- `Completeness (%)`
-- `Accuracy (%)`
-- `SCI (Índice de Completitud Espacial)`
-- `Precision (%)`
-- Detección de `Commissions` y `Omissions`
+- **Automáticas (prevalidación):**
+  - `Completeness (%)`
+  - `Accuracy (%)`
+  - `SCI` (Índice de Completitud Espacial)
+
+- **Validadas (post-GSV):**
+  - `Correción Completeness (%)`
+  - `Correción Accuracy (%)`
+  - `Correción Accuracy (%)`
+  - `SCI` (Índice de Completitud Espacial)`
+
+Además, detección de:
+- `Commission` (segmentos OSM sin referencia oficial).
+- `Omission` (segmentos oficiales ausentes en OSM).
+- `Partial Match` (coincidencias bufferizadas).
+
 
 ---
 
@@ -71,7 +101,7 @@ Este proyecto fue desarrollado con Python e integra las siguientes bibliotecas:
 - [shapely](https://shapely.readthedocs.io/)
 - [openpyxl](https://openpyxl.readthedocs.io/)
 - [ohsome-py](https://github.com/GIScience/ohsome-py) (acceso a datos históricos OSM)
-
+- [arcpy](https://github.com/GIScience/ohsome-py) ( generación de secciones censales))
 ---
 
 ## ✍️ Autora
@@ -85,7 +115,7 @@ Este análisis forma parte del Trabajo de Fin de Máster (TFM) en Geoinformació
 ## 📥 Descarga del proyecto
 
 Puedes clonar este repositorio o descargarlo como archivo `.zip` desde:  
-[https://github.com/TU_USUARIO/NOMBRE_REPO](https://github.com/TU_USUARIO/NOMBRE_REPO)
+[https://github.com/zuzu9627/TFM-OSM-BICI-BCN](https://github.com/zuzu9627/TFM-OSM-BICI-BCN)
 
 Haz clic en el botón verde `<> Code` > `Download ZIP`.
 
